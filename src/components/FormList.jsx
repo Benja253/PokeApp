@@ -10,6 +10,10 @@ const FormList = ({setTypeTarget, setPokemonTarget}) => {
 
   const submitAside = e =>{
     e.preventDefault()
+    const valueTrimmedAndLowerCase = e.target.firstChild.value.trim().toLowerCase()
+    setPokemonTarget(valueTrimmedAndLowerCase)
+    e.target.firstChild.value = ''
+    e.target.lastChild.value = 'All pokemons'
   }
 
   useEffect(() => {
@@ -17,10 +21,9 @@ const FormList = ({setTypeTarget, setPokemonTarget}) => {
       .then(({data}) => setTypePokemon(data.results))
   },[])
 
-
-  const mapType = type => {
-    if(type.name !== 'unknown' || type.name !== 'shadow')
-      <option key={type.url} value={type.name}>{type.name}</option>
+  const onChangeSelect = e => {
+    setPokemonTarget(undefined)
+    setTypeTarget(e.target.value)
   }
 
   return (
@@ -30,10 +33,11 @@ const FormList = ({setTypeTarget, setPokemonTarget}) => {
         <input
           className='input-form-list'
           type="text"
-          onChange={e => setPokemonTarget(e.target.value)}
         />
         <button className='button-form-list'>Search</button>
-        <select defaultValue='All pokemons' onChange={e => setTypeTarget(e.target.value)}>
+        <select 
+          defaultValue='All pokemons'
+          onChange={e => onChangeSelect(e)}>
           <option value='All pokemons'>All pokemons</option>
           {
             typePokemon?.map(type => (

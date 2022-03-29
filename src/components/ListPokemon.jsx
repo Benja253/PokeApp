@@ -18,14 +18,16 @@ const ListPokemon = () => {
   
 
   useEffect(() => {
-    if(typeTarget === 'All pokemons'){
+    if(typeTarget === 'All pokemons' && !pokemonTarget){
       getPokemons()
     }
-    else {
+    else if(!pokemonTarget) {
       axios.get(`https://pokeapi.co/api/v2/type/${typeTarget}`)
         .then(({data}) => setPokemonsUrl(data?.pokemon))
+    } else {
+      setPokemonsUrl(`https://pokeapi.co/api/v2/pokemon/${pokemonTarget}`)
     }
-  },[typeTarget])
+  },[typeTarget, pokemonTarget])
 
   return (
     <>
@@ -36,12 +38,15 @@ const ListPokemon = () => {
       />
       <div className="card-container">
         {
-          pokemonsUrl?.map(pokemon => (
-            pokemon.pokemon ?
-              <PokemonCard key={pokemon?.pokemon.url} url={pokemon?.pokemon.url} />
-            :
-              <PokemonCard key={pokemon.url} url={pokemon.url} />
-          ))
+          typeof pokemonsUrl === 'string' ?
+            <PokemonCard url={pokemonsUrl} />
+          :
+            pokemonsUrl?.map(pokemon => (
+              pokemon.pokemon ?
+                <PokemonCard key={pokemon?.pokemon.url} url={pokemon?.pokemon.url} />
+              :
+                <PokemonCard key={pokemon.url} url={pokemon.url} />
+            ))
         }
       </div>
     </>

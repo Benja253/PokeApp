@@ -14,7 +14,7 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+    <Provider store={store}>
       <PokeApp />
     </Provider>
   </React.StrictMode>,

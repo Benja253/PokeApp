@@ -1,14 +1,22 @@
-import React from 'react'
+import { useState } from 'react'
 import pokedexLetters from '../assets/logo-pokedex.png'
-import { useSelector } from 'react-redux' 
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
 
-  const trainerName = useSelector(state => state.trainerName)
+  const [ inputTrainer, setInputTrainer ] = useState()
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
   const submit = e => {
     e.preventDefault()
-    console.log(e.target.firstChild.value)
+    dispatch({
+      type: 'CHANGE_NAME',
+      payload: inputTrainer
+    })
+    navigate('/pokemon')
   }
 
   return (
@@ -26,7 +34,9 @@ const Home = () => {
         <input
           className='input-home'
           type="text"
-          placeholder='Enter your trainer name.' />
+          placeholder='Enter your trainer name.' 
+          onChange={e => setInputTrainer(e.target.value)}
+        />
         <button className='btn-home'>Submit</button>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Error from './Error'
+import { useNavigate } from 'react-router-dom'
 
 const PokemonCard = ({url}) => {
 
@@ -16,13 +17,15 @@ const PokemonCard = ({url}) => {
       .catch(() => setIsError(true))
   },[url])
 
+  const navigate = useNavigate()
+
   return (
     <>
       {
         isError ?
           <Error />
         :
-          <article className='card'>
+          <article className='card' onClick={() => navigate(`/pokemon/${pokemon.name}`)}>
             <header className='header-card'>
               <img src={pokemon && pokemon.sprites.other['official-artwork']['front_default']} alt="pokemon image" />
             </header>

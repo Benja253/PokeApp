@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-const FormList = ({setTypeTarget, setPokemonTarget, setPage, arrayPages, setPokemonPerPage, pokemonPerPage}) => {
+const FormList = ({setTypeTarget, setPokemonTarget}) => {
 
   const [typePokemon, setTypePokemon] = useState()
   
@@ -44,15 +44,6 @@ const FormList = ({setTypeTarget, setPokemonTarget, setPage, arrayPages, setPoke
               <option key={type.name} value={type.name}>{type.name}</option>
             ))
           }
-        </select>
-        <select
-          defaultValue={pokemonPerPage}
-          onChange={e => setPokemonPerPage(e.target.value)}>
-          <option value={4}>4</option>
-          <option value={8}>8</option>
-          <option value={12}>12</option>
-          <option value={16}>16</option>
-          <option value={20}>20</option>
         </select>
       </form>
     </aside>

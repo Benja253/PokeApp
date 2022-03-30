@@ -3,6 +3,8 @@ import FormList from './FormList'
 import HeaderPokemon from './HeaderPokemon'
 import axios from 'axios'
 import PokemonCard from './PokemonCard'
+import Config from './Config'
+import Pagination from './Pagination'
 
 const ListPokemon = () => {
 
@@ -21,12 +23,15 @@ const ListPokemon = () => {
   useEffect(() => {
     if(typeTarget === 'All pokemons' && !pokemonTarget){
       getPokemons()
+      setPage(1)
     }
     else if(!pokemonTarget) {
       axios.get(`https://pokeapi.co/api/v2/type/${typeTarget}`)
         .then(({data}) => setPokemonsUrl(data?.pokemon))
+      setPage(1)
     } else {
       setPokemonsUrl(`https://pokeapi.co/api/v2/pokemon/${pokemonTarget}`)
+      setPage(1)
     }
   },[typeTarget, pokemonTarget])
 
@@ -39,22 +44,34 @@ const ListPokemon = () => {
   }
   
   const cantPage = Math.ceil(pokemonsUrl?.length / pokemonPerPage)
+  const pagePagination = Math.floor((page - 1) / 5)
   let arrayPages = []
-  for(let i = 1; i <= cantPage; i++){
-    arrayPages.push(i)
+  if((pagePagination + 1) * 5 > cantPage){
+    for(let i = pagePagination * 5 + 1; i <= cantPage ; i++){
+      arrayPages.push(i)
+    }
+  } else {
+    for(let i = pagePagination * 5 + 1 ; i <= (pagePagination + 1) * 5; i++){
+      arrayPages.push(i)
+    }
   }
   
-
   return (
     <>
       <HeaderPokemon />
       <FormList
         setTypeTarget={setTypeTarget}
         setPokemonTarget={setPokemonTarget}
-        setPage={setPage}
-        arrayPages={arrayPages}
+      />
+      <Config
         setPokemonPerPage={setPokemonPerPage}
         pokemonPerPage={pokemonPerPage}
+      />
+      <Pagination
+        arrayPages={arrayPages}
+        setPage={setPage}
+        page={page}
+        cantPage={cantPage}
       />
       <div className="card-container">
         {

@@ -11,7 +11,7 @@ const PokeApp = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/pokemon' element={<ListPokemon />} />
-          <Route path='/pokemon/:id' element={<PokemonInfo />} />
+          <Route path='/pokemon/:name' element={<PokemonInfo />} />
         </Routes>
       </HashRouter>
     </div>

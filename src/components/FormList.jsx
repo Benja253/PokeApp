@@ -28,7 +28,10 @@ const FormList = ({setTypeTarget, setPokemonTarget}) => {
 
   return (
     <aside className='aside-container'>
-      <h1 className='title-form-list'><span className='span-name-trainer'>Welcome {trainerName}</span>, here you can find your favorite pokemon</h1>
+      <h1 className='title-form-list'>
+        <span className='span-name-trainer'>Welcome {trainerName}</span>, 
+        here you can find your favorite pokemon
+      </h1>
       <form onSubmit={e => submitAside(e)}>
         <input
           className='input-form-list'

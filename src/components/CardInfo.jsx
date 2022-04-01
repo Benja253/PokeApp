@@ -7,7 +7,7 @@ const CardInfo = ({pokemonInfo}) => {
       <header className='header-card-info'>
         <img
           className='srite-card-info'
-          src={pokemonInfo && pokemonInfo.sprites.other['official-artwork'].front_default} alt={`sprite ${name}`}
+          src={pokemonInfo && pokemonInfo.sprites.other['official-artwork'].front_default} alt={`sprite ${pokemonInfo.name}`}
         />
       </header>
       <section className='general-info-card-info'>

@@ -6,7 +6,7 @@ import PokemonInfo from './components/PokemonInfo'
 
 const PokeApp = () => {
   return (
-    <div>
+    <div className='poke-app'>
       <HashRouter>
         <Routes>
           <Route path='/' element={<Home />} />

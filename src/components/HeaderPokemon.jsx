@@ -3,9 +3,11 @@ import pokedexLetters from '../assets/logo-pokedex.png'
 
 const HeaderPokemon = () => {
   return (
-    <header className='header'>
+    <header className='rectangle-red list'>
+      <div className='rectangle-black list'></div>
+      <div className='circle list'></div>
       <img
-        className='pokedex-letters-header'
+        className='pokedex-letters-header list'
         src={pokedexLetters}
         alt="image pokedex letters"
       />

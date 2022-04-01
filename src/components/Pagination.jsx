@@ -18,12 +18,27 @@ const Pagination = ({arrayPages, setPage, page, cantPage}) => {
     }
   }
 
+  const clickPage = e => {
+    setPage(number)
+  }
+
   return (
     <div className='pagination-container'>
       <div className='preview-page' onClick={previewPage}>&lt;</div>
       {
         arrayPages.map(number =>(
-          <p key={number} onClick={() => setPage(number)}>{number}</p>
+          number === page ?
+            <p
+              className='number-page active-page'
+              key={number}
+              onClick={() => setPage(number)}>{number}
+            </p>
+          :
+            <p
+              className='number-page'
+              key={number}
+              onClick={() => setPage(number)}>{number}
+            </p>
         ))
       }
       <div className="next-page" onClick={nextPage}>&gt;</div>

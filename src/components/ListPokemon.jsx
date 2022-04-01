@@ -13,8 +13,8 @@ const ListPokemon = () => {
   const [pokemonsUrl, setPokemonsUrl] = useState()
   const [ page, setPage ] = useState(1)
   const [ pokemonPerPage, setPokemonPerPage ] = useState(8)
+  const [isVisible, setIsVisible] = useState(false)
 
-  
   const getPokemons = () => {
     axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126')
       .then(({data}) => setPokemonsUrl(data.results))
@@ -57,16 +57,22 @@ const ListPokemon = () => {
   }
   
   return (
-    <>
-      <HeaderPokemon />
+    <div className='list-pokemon-component'>
+      <HeaderPokemon setIsVisible={setIsVisible} />
       <FormList
         setTypeTarget={setTypeTarget}
         setPokemonTarget={setPokemonTarget}
+        setIsVisible={setIsVisible}
       />
-      <Config
-        setPokemonPerPage={setPokemonPerPage}
-        pokemonPerPage={pokemonPerPage}
-      />
+      {
+        isVisible &&
+        <Config
+          setPokemonPerPage={setPokemonPerPage}
+          pokemonPerPage={pokemonPerPage}
+          setIsVisible={setIsVisible}
+          setPage={setPage}
+        />
+      }
       <Pagination
         arrayPages={arrayPages}
         setPage={setPage}
@@ -86,7 +92,13 @@ const ListPokemon = () => {
             ))
         }
       </div>
-    </>
+      <Pagination
+        arrayPages={arrayPages}
+        setPage={setPage}
+        page={page}
+        cantPage={cantPage}
+      />
+    </div>
     
   )
 }

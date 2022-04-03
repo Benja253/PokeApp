@@ -4,9 +4,9 @@ const Config = ({pokemonPerPage, setPokemonPerPage, setIsVisible, setPage}) => {
 
   const toggleBtnClick = e => {
     if(e.target.classList.contains('toggle-btn-container')){
-      e.target.firstChild.classList.toggle('dark')
+      e.target.firstChild.classList.toggle('dark-mmode')
     } else {
-      e.target.classList.toggle('dark')
+      e.target.classList.toggle('dark-mode')
     }
   }
 

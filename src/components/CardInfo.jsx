@@ -1,13 +1,13 @@
 import React from 'react'
 
 const CardInfo = ({pokemonInfo}) => {
-  
+
   return (
     <article className='card-info'>
       <header className='header-card-info'>
         <img
           className='srite-card-info'
-          src={pokemonInfo && pokemonInfo.sprites.other['official-artwork'].front_default} alt={`sprite ${pokemonInfo.name}`}
+          src={pokemonInfo && pokemonInfo?.sprites.other['official-artwork'].front_default} alt={`sprite ${pokemonInfo?.name}`}
         />
       </header>
       <section className='general-info-card-info'>

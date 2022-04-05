@@ -17,11 +17,11 @@ const PokemonInfo = () => {
   },[])
 
   return (
-    <>
-      <HeaderPokemon />
+    <div className='pokemon-info-container'>
+      <HeaderPokemon className='header-pokemon-info' />
       <CardInfo pokemonInfo={pokemonInfo} />
       <Movements pokemonInfo={pokemonInfo} />
-    </>
+    </div>
   )
 }
 

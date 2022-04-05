@@ -11,7 +11,7 @@ const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible}) => {
 
   const submitAside = e =>{
     e.preventDefault()
-    const valueTrimmedAndLowerCase = e.target.firstChild.value.trim().toLowerCase()
+    const valueTrimmedAndLowerCase = e.target.firstChild.firstChild.value.trim().toLowerCase()
     setPokemonTarget(valueTrimmedAndLowerCase)
     e.target.firstChild.value = ''
     e.target.lastChild.value = 'All pokemons'

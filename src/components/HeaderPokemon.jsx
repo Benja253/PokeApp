@@ -1,9 +1,9 @@
 import React from 'react'
 import pokedexLetters from '../assets/logo-pokedex.png'
 
-const HeaderPokemon = () => {
+const HeaderPokemon = ({className}) => {
   return (
-    <header className='rectangle-red list'>
+    <header className={`rectangle-red list ${className}`}>
       <div className='rectangle-black list'></div>
       <div className='circle list'></div>
       <img

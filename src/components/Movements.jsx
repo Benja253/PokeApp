@@ -4,12 +4,15 @@ const Movements = ({pokemonInfo}) => {
   
   return (
     <article className='movement-container'>
+      <hr className='separator-movement' />
       <h2 className='movement-title'>Movements</h2>
-      {
-        pokemonInfo?.moves.map(move => (
-          <p className='movement-tag' key={move.move.name}>{move.move.name}</p>
-        ))
-      }
+      <div className='movement-tag-container'>
+        {
+          pokemonInfo?.moves.map(move => (
+            <p className='movement-tag' key={move.move.name}>{move.move.name}</p>
+          ))
+        }
+      </div>
     </article>
   )
 }

@@ -59,6 +59,7 @@ const CardInfo = ({pokemonInfo}) => {
           </ul>
         </section>
         <section className='stats-container-info'>
+          <hr className='separator-stat' />
           <h2 className="title-section-stat">Stats</h2>
           <div className='stat-container-info'>
             {

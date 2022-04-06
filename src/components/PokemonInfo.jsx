@@ -7,12 +7,12 @@ import axios from 'axios'
 
 const PokemonInfo = () => {
 
-  const { name } = useParams()
+  const { id } = useParams()
 
   const [pokemonInfo, setPokemonInfo] = useState()
   
   useEffect(() => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(({data}) => setPokemonInfo(data))
   },[])
 

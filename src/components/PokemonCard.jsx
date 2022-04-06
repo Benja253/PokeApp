@@ -25,7 +25,7 @@ const PokemonCard = ({url}) => {
         isError ?
           <Error />
         :
-          <article className={`card ${pokemon?.types[0].type.name}-border`} onClick={() => navigate(`/pokemon/${pokemon.name}`)}>
+          <article className={`card ${pokemon?.types[0].type.name}-border`} onClick={() => navigate(`/pokemon/${pokemon.id}`)}>
             <header className={'header-card' + ' ' + pokemon?.types[0].type.name}>
               <img
                 className='img-pokemon-card'

@@ -511,6 +511,20 @@ ul{
   height: 120px;
   position: relative;
   border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+.preview-next-pokemon-info{
+  width: 30px;
+  border: none;
+  background-color: #0C0C0C22;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px 0 0;
+  cursor: pointer;
+}
+.preview-next-pokemon-info:nth-child(3){
+  border-radius: 0 10px 0 0;
 }
 .srite-card-info{
   width: min(250px, 60%);
@@ -695,6 +709,8 @@ ul{
 }
 .name-stat-info{
   text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
 }
 .name-stat-info::after{
   content: ' :'
@@ -743,10 +759,29 @@ ul{
   align-items: center;
 }
 @media screen and (min-width: 650px){
+  .body-card-info{
+    padding: 30px 60px 60px;
+  }
+  .preview-next-pokemon-info{
+    width: 50px;
+    font-size: 25px;
+  }
   .id-general-info{
     font-size: 32px;
   }
   .name-pokemon-card-info{
     font-size: 32px;
+  }
+  .movement-container{
+    padding: 40px 60px;
+  }
+  .separator-movement{
+    margin-top: 17px;
+    margin-bottom: 40px;
+  }
+  .movement-title{
+    font-size: 32px;
+    top: 32px;
+    left: 60px;
   }
 }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import settingIcon from '../assets/icon-setting.png'
 
-const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible}) => {
+const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible, setIsVisiblePagination}) => {
 
   const [typePokemon, setTypePokemon] = useState()
   
@@ -15,6 +15,7 @@ const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible}) => {
     setPokemonTarget(valueTrimmedAndLowerCase)
     e.target.firstChild.value = ''
     e.target.lastChild.value = 'All pokemons'
+    setIsVisiblePagination(false)
   }
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible}) => {
   const onChangeSelect = e => {
     setPokemonTarget(undefined)
     setTypeTarget(e.target.value)
+    setIsVisiblePagination(true)
   }
 
   return (

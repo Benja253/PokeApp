@@ -11,9 +11,10 @@ const ListPokemon = () => {
   const [typeTarget, setTypeTarget] = useState('All pokemons')
   const [pokemonTarget, setPokemonTarget] = useState()
   const [pokemonsUrl, setPokemonsUrl] = useState()
-  const [ page, setPage ] = useState(1)
-  const [ pokemonPerPage, setPokemonPerPage ] = useState(8)
+  const [page, setPage] = useState(1)
+  const [pokemonPerPage, setPokemonPerPage] = useState(8)
   const [isVisible, setIsVisible] = useState(false)
+  const [isVisiblePagination, setIsVisiblePagination] = useState(true)
 
   const getPokemons = () => {
     axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126')
@@ -63,6 +64,7 @@ const ListPokemon = () => {
         setTypeTarget={setTypeTarget}
         setPokemonTarget={setPokemonTarget}
         setIsVisible={setIsVisible}
+        setIsVisiblePagination={setIsVisiblePagination}
       />
       {
         isVisible &&
@@ -73,12 +75,15 @@ const ListPokemon = () => {
           setPage={setPage}
         />
       }
-      <Pagination
-        arrayPages={arrayPages}
-        setPage={setPage}
-        page={page}
-        cantPage={cantPage}
-      />
+      {
+        isVisiblePagination &&
+        <Pagination
+          arrayPages={arrayPages}
+          setPage={setPage}
+          page={page}
+          cantPage={cantPage}
+        />
+      }
       <div className="card-container">
         {
           typeof pokemonsUrl === 'string' ?
@@ -92,12 +97,15 @@ const ListPokemon = () => {
             ))
         }
       </div>
-      <Pagination
-        arrayPages={arrayPages}
-        setPage={setPage}
-        page={page}
-        cantPage={cantPage}
-      />
+      {
+        isVisiblePagination &&
+        <Pagination
+          arrayPages={arrayPages}
+          setPage={setPage}
+          page={page}
+          cantPage={cantPage}
+        />
+      }
     </div>
     
   )

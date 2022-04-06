@@ -1,14 +1,39 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CardInfo = ({pokemonInfo}) => {
+
+  const navigate = useNavigate()
+
+  const nextPageInfo = () => {
+    if(pokemonInfo.id + 1 > 1126){
+      navigate('/pokemon/1')
+    } else {
+      navigate(`/pokemon/${pokemonInfo.id + 1}`)
+    }
+    window.location.reload(true);
+  }
+  const previewPageInfo = () => {
+    if(pokemonInfo.id - 1 < 1){
+      navigate('/pokemon/1125')
+    } else {
+      navigate(`/pokemon/${pokemonInfo.id - 1}`)
+    }
+    window.location.reload(true);
+  }
 
   return (
     <article className='card-info'>
       <header className={`header-card-info ${pokemonInfo?.types[0].type.name}`}>
+        <button
+          className='preview-next-pokemon-info'
+          onClick={previewPageInfo}
+        >&#60;</button>
         <img
           className='srite-card-info'
           src={pokemonInfo && pokemonInfo?.sprites.other['official-artwork'].front_default} alt={`sprite ${pokemonInfo?.name}`}
         />
+        <button className='preview-next-pokemon-info' onClick={nextPageInfo}>&#62;</button>
       </header>
       <div className='body-card-info'>
         <section className='general-info-card-info'>

@@ -13,7 +13,7 @@ const FormList = ({setTypeTarget, setPokemonTarget, setIsVisible, setIsVisiblePa
     e.preventDefault()
     const valueTrimmedAndLowerCase = e.target.firstChild.firstChild.value.trim().toLowerCase()
     setPokemonTarget(valueTrimmedAndLowerCase)
-    e.target.firstChild.value = ''
+    e.target.firstChild.firstChild.value = ''
     e.target.lastChild.value = 'All pokemons'
     setIsVisiblePagination(false)
   }

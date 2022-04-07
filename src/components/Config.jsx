@@ -4,7 +4,7 @@ const Config = ({pokemonPerPage, setPokemonPerPage, setIsVisible, setPage}) => {
 
   const toggleBtnClick = e => {
     if(e.target.classList.contains('toggle-btn-container')){
-      e.target.firstChild.classList.toggle('dark-mmode')
+      e.target.firstChild.classList.toggle('dark-mode')
     } else {
       e.target.classList.toggle('dark-mode')
     }
@@ -23,9 +23,14 @@ const Config = ({pokemonPerPage, setPokemonPerPage, setIsVisible, setPage}) => {
         <hr className='setting-hr' />
         <div className='toggle-container'>
           <h3 className='title-toggle'>Light / Dark mode</h3>
-          <div className='toggle-btn-container' onClick={toggleBtnClick}>
-            <div className='toggle-btn'></div>
-          </div>
+          {
+            false ?
+              <div className='toggle-btn-container' onClick={toggleBtnClick}>
+                <div className='toggle-btn'></div>
+              </div>
+            :
+              <h3 style={{textAlign: 'center', color: '#0003'}}>Coming soon...</h3>
+          }
         </div>
         <div className='poke-per-page-container'>
           <h3 className='label-poke-per-page'>Pokemon per page</h3>

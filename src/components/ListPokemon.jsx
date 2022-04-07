@@ -5,6 +5,7 @@ import axios from 'axios'
 import PokemonCard from './PokemonCard'
 import Config from './Config'
 import Pagination from './Pagination'
+import ChargingPage from './ChargingPage'
 
 const ListPokemon = () => {
 
@@ -16,17 +17,16 @@ const ListPokemon = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [isVisiblePagination, setIsVisiblePagination] = useState(true)
 
-  const getPokemons = () => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126')
+  const getPokemons = (offset = 0, limit = pokemonPerPage) => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`)
       .then(({data}) => setPokemonsUrl(data.results))
   }
 
   useEffect(() => {
     if(typeTarget === 'All pokemons' && !pokemonTarget){
-      getPokemons()
+      getPokemons(0, 1126)
       setPage(1)
-    }
-    else if(!pokemonTarget) {
+    } else if(!pokemonTarget) {
       axios.get(`https://pokeapi.co/api/v2/type/${typeTarget}`)
         .then(({data}) => setPokemonsUrl(data?.pokemon))
       setPage(1)
@@ -87,7 +87,7 @@ const ListPokemon = () => {
       <div className="card-container">
         {
           typeof pokemonsUrl === 'string' ?
-            <PokemonCard url={pokemonsUrl} />
+            <PokemonCard pokemonsUrl={pokemonsUrl} url={pokemonsUrl} />
           :
             pokemonArray?.map(pokemon => (
               pokemon.pokemon ?

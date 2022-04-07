@@ -6,20 +6,22 @@ const CardInfo = ({pokemonInfo}) => {
   const navigate = useNavigate()
 
   const nextPageInfo = () => {
-    if(pokemonInfo.id + 1 > 1126){
+    if(pokemonInfo.id + 1 == 899){
+      navigate('/pokemon/10001')
+    } else if(pokemonInfo.id + 1 > 10228 ) {
       navigate('/pokemon/1')
     } else {
       navigate(`/pokemon/${pokemonInfo.id + 1}`)
     }
-    window.location.reload(true);
   }
   const previewPageInfo = () => {
     if(pokemonInfo.id - 1 < 1){
-      navigate('/pokemon/1125')
+      navigate('/pokemon/10228')
+    } else if(pokemonInfo.id - 1 == 10000 ){
+      navigate('/pokemon/898')
     } else {
       navigate(`/pokemon/${pokemonInfo.id - 1}`)
     }
-    window.location.reload(true);
   }
 
   return (

@@ -18,13 +18,24 @@ const Pagination = ({arrayPages, setPage, page, cantPage}) => {
     }
   }
 
-  const clickPage = e => {
-    setPage(number)
+  const previewBlockPages = () =>{
+    setPage(arrayPages[0] - 1)
+  }
+
+  const nextBlockPages = () =>{
+    setPage(arrayPages[4] + 1)
   }
 
   return (
     <div className='pagination-container'>
       <div className='preview-page' onClick={previewPage}>&lt;</div>
+      {
+        arrayPages[0] !== 1 && 
+        <span
+          className='block-pages'
+          onClick={previewBlockPages}
+        >...</span>
+      }
       {
         arrayPages.map(number =>(
           number === page ?
@@ -40,6 +51,13 @@ const Pagination = ({arrayPages, setPage, page, cantPage}) => {
               onClick={() => setPage(number)}>{number}
             </p>
         ))
+      }
+      {
+        arrayPages[arrayPages.length - 1] !== cantPage && 
+        <span
+          className='block-pages'
+          onClick={nextBlockPages}
+        >...</span>
       }
       <div className="next-page" onClick={nextPage}>&gt;</div>
     </div>
